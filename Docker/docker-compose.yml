@@ -1,0 +1,30 @@
+version: "3.2"
+services:
+
+    db:
+        image: postgres:12.3-alpine
+        container_name: 'cars'
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_USER: nemo
+            POSTGRES_PASSWORD: unique
+            POSTGRES_DB: cars
+        networks:
+            - go_net
+    
+    pgadmin:
+        image: dpage/pgadmin4
+        container_name: pgadmin
+        ports:
+            - 8085:80
+        environment:
+            PGADMIN_DEFAULT_EMAIL: user@domain.com
+            PGADMIN_DEFAULT_PASSWORD: password
+
+        networks:
+            - go_net
+
+networks:
+    go_net:
+        driver: bridge
