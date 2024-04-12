@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -44,7 +43,7 @@ public class CarService {
         return carMapper.toDTO(car);
     }
 
-    public CarDTO update(UUID id, CarDTO carDTO) {
+    public CarDTO update(String id, CarDTO carDTO) {
         return carRepository.findById(id).map(car -> {
             car.setName(carDTO.name());
             car.setColor(carDTO.color());
@@ -54,11 +53,11 @@ public class CarService {
         }).orElseThrow( () -> new RecordNotFoundException(id));
     }
 
-    public void delete(UUID id) {
+    public void delete(String id) {
         carRepository.delete(carRepository.findById(id).orElseThrow( () -> new RecordNotFoundException(id)));
     }
 
-    public CarDTO getById(UUID id) {
+    public CarDTO getById(String id) {
         return carRepository.findById(id).map(carMapper::toDTO).orElseThrow(() -> new RecordNotFoundException(id));
     }
 }

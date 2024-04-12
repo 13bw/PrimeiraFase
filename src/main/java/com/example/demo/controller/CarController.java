@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -43,7 +41,7 @@ public class CarController {
 
     @GetMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    public CarDTO getById(@PathVariable("id") @NotNull UUID id) {
+    public CarDTO getById(@PathVariable("id") @NotNull String id) {
         return carService.getById(id);
     }
 
@@ -55,13 +53,13 @@ public class CarController {
 
     @PutMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    public CarDTO update(@PathVariable("id") @NotNull UUID id, @RequestBody @Valid CarDTO carDTO) {
+    public CarDTO update(@PathVariable("id") @NotNull String id, @RequestBody @Valid CarDTO carDTO) {
         return carService.update(id, carDTO);
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") @NotNull UUID id) {
+    public void delete(@PathVariable("id") @NotNull String id) {
         carService.delete(id);
     }
 }
