@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import com.example.demo.exception.RecordNotFoundException;
 
@@ -52,5 +53,12 @@ public class ApplicationControllerAdvice {
                 .map(violation -> String.format("%s: %s", violation.getPropertyPath(), violation.getMessage()))
                 .collect(Collectors.joining(", "));
         return "Error: " + errorMessage;
+    }
+
+    
+    @ExceptionHandler(NoResourceFoundException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleNoResourceFoundException(NoResourceFoundException ex) {
+        return "Resource not found!";
     }
 }
