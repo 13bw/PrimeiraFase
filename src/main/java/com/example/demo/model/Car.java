@@ -3,6 +3,8 @@ package com.example.demo.model;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -12,15 +14,18 @@ import lombok.Data;
 @Data
 @Document(collection = "cars")
 public class Car {
-    
-    public Car(String name, String color, String model, int car_year) {
+
+    public Car(String name, String color, String model, int car_year,
+            FuelType fuelType) {
         this.name = name;
         this.color = color;
         this.model = model;
         this.car_year = car_year;
+        this.fuelType = fuelType;
     }
 
-    public Car() {}
+    public Car() {
+    }
 
     @Id
     private String id;
@@ -43,4 +48,8 @@ public class Car {
     @NotNull
     @Positive
     private int car_year;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private FuelType fuelType;
 }
