@@ -49,6 +49,7 @@ public class CarService {
             car.setName(carDTO.name());
             car.setColor(carDTO.color());
             car.setModel(carDTO.model());
+            car.setFuelType(carDTO.fuelType());
             car.setCar_year(carDTO.car_year());
             return carMapper.toDTO(carRepository.save(car));
         }).orElseThrow( () -> new RecordNotFoundException(id));

@@ -8,10 +8,10 @@ import com.example.demo.model.Car;
 public class CarMapper {
     
     public CarDTO toDTO(Car car) {
-        return new CarDTO(car.getId(), car.getName(), car.getColor(), car.getModel(), car.getCar_year());
+        return new CarDTO(car.getId(), car.getName(), car.getColor(), car.getModel(), car.getCar_year(), car.getFuelType());
     }
 
     public Car toModel(CarDTO carDTO) {
-        return new Car(carDTO.name(), carDTO.color(), carDTO.model(), carDTO.car_year());
+        return new Car(carDTO.name(), carDTO.color(), carDTO.model(), carDTO.car_year(), carDTO.fuelType());
     }
 }
