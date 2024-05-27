@@ -1,5 +1,3 @@
-[Youtube - Resolução dos Desafios](https://youtu.be/hEepwpYclpY) 
-<br><br>
 [Primeiro desafio - Google Colab](https://colab.research.google.com/drive/1n4s36CIBO7L7ZBoiX8na6FvHZRLzI9lM#scrollTo=e0x0XU5hv8d4)
 
 ---
